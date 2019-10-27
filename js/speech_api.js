@@ -1,6 +1,6 @@
 /* ===================================================================
 
- * Web Speech APIæ“ä½œç”¨ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+ * Web Speech API‘€ì—pƒXƒNƒŠƒvƒg
 
 =================================================================== */
 $(function() {
@@ -11,63 +11,71 @@ $(function() {
       const mic_btn     = document.getElementsByName("mic");
 
       var isRecognition = false;
+      var autoChecker;
       recognition.lang = LANG_JAPAN;
 
       button.addEventListener('click', function () {
-        // ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚’æ”¹é€ ã—ãŸãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸå ´åˆ
+        // ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ğ‰ü‘¢‚µ‚½ƒgƒOƒ‹ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½ê‡
         if(isRecognition){
-           // é–‹å§‹ä¸­ãªã®ã§ã€åœæ­¢
+           // ŠJn’†‚È‚Ì‚ÅA’â~
            recognition.stop();
            isRecognition = false;
-           // ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®ãƒã‚§ãƒƒã‚¯ã‚’å¤–ã™ï¼ˆï¼ãƒˆã‚°ãƒ«ã‚ªãƒ•ï¼‰
+           // ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìƒ`ƒFƒbƒN‚ğŠO‚·iƒgƒOƒ‹ƒIƒtj
            mic_btn.item(0).checked = false;
         }else{
-           // åœæ­¢ä¸­ãªã®ã§ã€é–‹å§‹
+           // ’â~’†‚È‚Ì‚ÅAŠJn
            recognition.start();
            isRecognition = true;
         }
       });
 
-      setInterval(function(){
-         if (mic_btn.item(0).checked){
-             mic_btn.item(0).checked = false;
-             recognition.start();
-             isRecognition = true;
-         }
-      },5000);
-
+      function StartAutoCheck(){
+         autoChecker = setInterval(function(){
+             if (mic_btn.item(0).checked == true){
+                 mic_btn.item(0).checked = false;
+                 recognition.start();
+                 isRecognition = true;
+             }
+         },5000);
+      };
+      
+      function StopAutoCheck(){
+          clearInterval(autoChecker);
+      }
 
       recognition.onresult = function (e) {
-        // Web Speech APIãŒéŸ³å£°ã‚’è§£æã—ãŸã¨ã
+        // Web Speech API‚ª‰¹º‚ğ‰ğÍ‚µ‚½‚Æ‚«
         let result = e.results[0][0].transcript;
         textarea.value = result;
 
+          StopAutoCheck();
 	      speaking();
+          StartAutoCheck();
 
       };
 
       recognition.onend = function(){
-        // Web Speech APIãŒéŸ³å£°çµ‚äº†ã¨èªè­˜ã—ãŸã¨ã
+        // Web Speech API‚ª‰¹ºI—¹‚Æ”F¯‚µ‚½‚Æ‚«
            recognition.stop();
            isRecognition = false;
            mic_btn.item(0).checked = true;
-      }
+      };
 
 
-      // ç™ºè©±æ©Ÿèƒ½ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
+      // ”­˜b‹@”\‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
       var msg = new SpeechSynthesisUtterance();
 
-      function speaking() {  //å®šç¾©ã•ã‚ŒãŸFunction
-        msg.volume = 1.0; // éŸ³é‡ min 0 ~ max 1
-        msg.rate = 0.6; // é€Ÿåº¦ min 0 ~ max 10
-        msg.pitch = 1.7; // éŸ³ç¨‹ min 0 ~ max 2
+      function speaking() {  //’è‹`‚³‚ê‚½Function
+        msg.volume = 1.0; // ‰¹—Ê min 0 ~ max 1
+        msg.rate = 0.6; // ‘¬“x min 0 ~ max 10
+        msg.pitch = 1.7; // ‰¹’ö min 0 ~ max 2
 
-        msg.text = $('#txt').val(); // å–‹ã‚‹å†…å®¹
+        msg.text = $('#txt').val(); // ’‚é“à—e
         msg.lang = 'ja-JP'; // en-US or ja-JP
 
         var voices = window.speechSynthesis.getVoices();
 
-        // ç™ºè©±å®Ÿè¡Œ
+        // ”­˜bÀs
         speechSynthesis.speak(msg);
 
       };
