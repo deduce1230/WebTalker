@@ -28,10 +28,22 @@ $(function() {
         }
       });
 
+      setInterval(function(){
+         if (mic_btn.item(0).checked){
+             mic_btn.item(0).checked = false;
+             recognition.start();
+             isRecognition = true;
+         }
+      },5000);
+
+
       recognition.onresult = function (e) {
         // Web Speech APIが音声を解析したとき
         let result = e.results[0][0].transcript;
         textarea.value = result;
+
+	      speaking();
+
       };
 
       recognition.onend = function(){
@@ -40,4 +52,24 @@ $(function() {
            isRecognition = false;
            mic_btn.item(0).checked = true;
       }
+
+
+      // 発話機能をインスタンス化
+      var msg = new SpeechSynthesisUtterance();
+
+      function speaking() {  //定義されたFunction
+        msg.volume = 1.0; // 音量 min 0 ~ max 1
+        msg.rate = 0.6; // 速度 min 0 ~ max 10
+        msg.pitch = 1.7; // 音程 min 0 ~ max 2
+
+        msg.text = $('#txt').val(); // 喋る内容
+        msg.lang = 'ja-JP'; // en-US or ja-JP
+
+        var voices = window.speechSynthesis.getVoices();
+
+        // 発話実行
+        speechSynthesis.speak(msg);
+
+      };
+
 });

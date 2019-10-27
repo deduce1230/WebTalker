@@ -22,7 +22,7 @@ $(function($){
 
 
 <header>
-<h1>かんたん筆談</h1>
+<h1>まねっこおしゃべり</h1>
 </header>
 
 <nav>
@@ -33,7 +33,7 @@ $(function($){
 </nav>
 
 <div id="contents">
-	<h6 id="sample">ボタンを押しておしゃべりしてください
+	<h6 id="sample">聞き取り中の時におしゃべりしてみてください
       <p>
       <label>
           <input type="checkbox" name = "mic" checked>
@@ -42,7 +42,11 @@ $(function($){
       </label>
       </p>
     </h6>
-    <textarea class="speeched_area" rows="5" readonly></textarea>
+    <textarea id="txt" class="speeched_area" rows="5" readonly></textarea>
+
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+
+
 </div><!-- /.contents -->
 
 <footer>
