@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>かんたん筆談</title>
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.smoothscroll.js"></script>
+<script type="text/javascript" src="js/jquery.scrollshow.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script>
+$(function($){
+	$('html').smoothscroll({easing : 'swing', speed : 1000, margintop : 30, headerfix : $('nav')});
+	$('.totop').scrollshow({position : 500});
+});
+</script>
+</head>
+<body>
+
+
+<header>
+<h1>かんたん筆談</h1>
+</header>
+
+<nav>
+<ul>
+	<li><a href="index.html">メイン画面</a></li>
+	<li><a href="usage.html">使い方</a></li>
+</ul>
+</nav>
+
+<div id="contents">
+	<h2 id="sample">使い方</h2>
+	「かんたん筆談」は、筆談が必要なおしゃべりをするときに、紙とペンを使わないですむための便利ツールです。
+	<p>
+	使い方は簡単です。
+      <label>
+          <input type="checkbox" name = "mic" checked>
+          <span>開始します</span>
+          <span>聞き取り中</span>
+      </label>
+	このボタンを押すと、マイクが聞き取り状態になります（このページではなりません）ので、
+	お話ししたい内容を画面に向かってお話しください。
+	お話が途切れたところで、自動的に聞き取りが終了し、画面に今お話しした内容が表示されます。
+	<h3>句読点が表示されないので、目安は５～６秒以内で、できれば一文ずつお話しください</h3>
+	<p><p>再び開始ボタンを押せば聞き取り状態になりますので、何度でもお話しいただけますが、
+	前回お話しいただいた内容は消去されますのでご注意ください。
+</div><!-- /.contents -->
+
+<footer>
+	<div><small>distributed by N.Yamashita  ver. 1.100</small></div><!-- /.copyright -->
+</footer>
+
+
+<div class="totop"><a href="#"><img src="images/totop.png" alt="ページのトップへ戻る"></a></div><!-- /.totop -->
+</body>
+</html>

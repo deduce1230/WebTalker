@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>かんたん筆談</title>
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.smoothscroll.js"></script>
+<script type="text/javascript" src="js/jquery.scrollshow.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script>
+$(function($){
+	$('html').smoothscroll({easing : 'swing', speed : 1000, margintop : 30, headerfix : $('nav')});
+	$('.totop').scrollshow({position : 500});
+});
+</script>
+</head>
+<body>
+
+
+<header>
+<h1>かんたん筆談</h1>
+</header>
+
+<nav>
+<ul>
+	<li><a href="index.html">メイン画面</a></li>
+	<li><a href="usage.html">使い方</a></li>
+</ul>
+</nav>
+
+<div id="contents">
+	<h6 id="sample">ボタンを押しておしゃべりしてください
+      <p>
+      <label>
+          <input type="checkbox" name = "mic" checked>
+          <span>開始します</span>
+          <span>聞き取り中</span>
+      </label>
+      </p>
+    </h6>
+    <textarea class="speeched_area" rows="5" readonly></textarea>
+</div><!-- /.contents -->
+
+<footer>
+	<div><small>distributed by N.Yamashita  ver. 1.100</small></div><!-- /.copyright -->
+</footer>
+
+<div class="totop"><a href="#"><img src="images/totop.png" alt="ページのトップへ戻る"></a></div><!-- /.totop -->
+
+<script type="text/javascript" src="js/speech_api.js"></script>
+
+</body>
+</html>
