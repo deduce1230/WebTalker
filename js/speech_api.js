@@ -29,7 +29,6 @@ $(function() {
       });
 
       setInterval(function(){
-         alert("聞き取り開始");
          if (mic_btn.item(0).checked){
              mic_btn.item(0).checked = false;
              recognition.start();
