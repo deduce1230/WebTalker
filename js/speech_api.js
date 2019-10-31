@@ -70,12 +70,12 @@ $(function() {
 
         var synth = window.speechSynthesis;
         var voices = synth.getVoices();
-        for(i = 0; i < voices.length ; i++) {
-          //alert(voices[i].name);
-          if (voices[i].lang == "ja-JP"){
-            msg.voice = voices[i];
-          }
-        }
+//        for(i = 0; i < voices.length ; i++) {
+//          //alert(voices[i].name);
+//          if (voices[i].lang == "ja-JP"){
+//            msg.voice = voices[i];
+//          }
+//        }
 
 	msg.volume = 1.0; // 音量 min 0 ~ max 1
         msg.rate = 0.6; // 速度 min 0 ~ max 10
@@ -84,10 +84,13 @@ $(function() {
         msg.text = $('#txt').val(); // 喋る内容
         msg.lang = 'ja-JP'; // en-US or ja-JP
 
-        var voices = window.speechSynthesis.getVoices();
+        //var voices = window.speechSynthesis.getVoices();
 
         // 発話実行
-        speechSynthesis.speak(msg);
+        // speechSynthesis.speak(msg);
+        for(i = 0; i < voices.length ; i++) {
+            speechSynthesis.speak(msg);
+	}
 
       };
 
