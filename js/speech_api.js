@@ -70,6 +70,7 @@ $(function() {
 
         var synth = window.speechSynthesis;
         var voices = synth.getVoices();
+	msg.voice = voices[0];
 //        for(i = 0; i < voices.length ; i++) {
 //          //alert(voices[i].name);
 //          if (voices[i].lang == "ja-JP"){
@@ -87,11 +88,11 @@ $(function() {
         //var voices = window.speechSynthesis.getVoices();
 
         // 発話実行
-        // speechSynthesis.speak(msg);
-        for(i = 0; i < voices.length ; i++) {
-	    msg.voice = voices[i];
-            speechSynthesis.speak(msg);
-	}
+        speechSynthesis.speak(msg);
+        //for(i = 0; i < voices.length ; i++) {
+	//    msg.voice = voices[i];
+        //    speechSynthesis.speak(msg);
+	//}
 
       };
 
