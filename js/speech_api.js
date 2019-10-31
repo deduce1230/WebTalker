@@ -89,6 +89,7 @@ $(function() {
         // 発話実行
         // speechSynthesis.speak(msg);
         for(i = 0; i < voices.length ; i++) {
+	    msg.voice = voices[i];
             speechSynthesis.speak(msg);
 	}
 
