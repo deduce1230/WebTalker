@@ -79,8 +79,8 @@ $(function() {
 //        }
 
 	msg.volume = 1.0; // 音量 min 0 ~ max 1
-        msg.rate = 4.0; // 速度 min 0 ~ max 10
-        msg.pitch = 1.7; // 音程 min 0 ~ max 2
+        msg.rate = 1.0; // 速度 min 0 ~ max 10
+        msg.pitch = 1.0; // 音程 min 0 ~ max 2
 
         msg.text = $('#txt').val(); // 喋る内容
         msg.lang = 'ja-JP'; // en-US or ja-JP
