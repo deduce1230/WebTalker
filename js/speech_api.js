@@ -1,6 +1,6 @@
 /* ===================================================================
 
- * Web Speech API‘€ì—pƒXƒNƒŠƒvƒg
+ * Web Speech APIæ“ä½œç”¨ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 
 =================================================================== */
 $(function() {
@@ -15,15 +15,15 @@ $(function() {
       recognition.lang = LANG_JAPAN;
 
       button.addEventListener('click', function () {
-        // ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚ğ‰ü‘¢‚µ‚½ƒgƒOƒ‹ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½ê‡
+        // ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚’æ”¹é€ ã—ãŸãƒˆã‚°ãƒ«ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸå ´åˆ
         if(isRecognition){
-           // ŠJn’†‚È‚Ì‚ÅA’â~
+           // é–‹å§‹ä¸­ãªã®ã§ã€åœæ­¢
            recognition.stop();
            isRecognition = false;
-           // ƒ`ƒFƒbƒNƒ{ƒbƒNƒX‚Ìƒ`ƒFƒbƒN‚ğŠO‚·iƒgƒOƒ‹ƒIƒtj
+           // ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã®ãƒã‚§ãƒƒã‚¯ã‚’å¤–ã™ï¼ˆï¼ãƒˆã‚°ãƒ«ã‚ªãƒ•ï¼‰
            mic_btn.item(0).checked = false;
         }else{
-           // ’â~’†‚È‚Ì‚ÅAŠJn
+           // åœæ­¢ä¸­ãªã®ã§ã€é–‹å§‹
            recognition.start();
            isRecognition = true;
         }
@@ -44,7 +44,7 @@ $(function() {
       }
 
       recognition.onresult = function (e) {
-        // Web Speech API‚ª‰¹º‚ğ‰ğÍ‚µ‚½‚Æ‚«
+        // Web Speech APIãŒéŸ³å£°ã‚’è§£æã—ãŸã¨ã
         let result = e.results[0][0].transcript;
         textarea.value = result;
 
@@ -55,27 +55,35 @@ $(function() {
       };
 
       recognition.onend = function(){
-        // Web Speech API‚ª‰¹ºI—¹‚Æ”F¯‚µ‚½‚Æ‚«
+        // Web Speech APIãŒéŸ³å£°çµ‚äº†ã¨èªè­˜ã—ãŸã¨ã
            recognition.stop();
            isRecognition = false;
            mic_btn.item(0).checked = true;
       };
 
 
-      // ”­˜b‹@”\‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
+      // ç™ºè©±æ©Ÿèƒ½ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
       var msg = new SpeechSynthesisUtterance();
 
-      function speaking() {  //’è‹`‚³‚ê‚½Function
-        msg.volume = 1.0; // ‰¹—Ê min 0 ~ max 1
-        msg.rate = 0.6; // ‘¬“x min 0 ~ max 10
-        msg.pitch = 1.7; // ‰¹’ö min 0 ~ max 2
+      var synth = window.speechSynthesis;
+      var voices = synth.getVoices();
 
-        msg.text = $('#txt').val(); // ’‚é“à—e
+      function speaking() {  //å®šç¾©ã•ã‚ŒãŸFunction
+
+        for(i = 0; i < voices.length ; i++) {
+          alert(voices[i].name);
+        }
+
+	msg.volume = 1.0; // éŸ³é‡ min 0 ~ max 1
+        msg.rate = 0.6; // é€Ÿåº¦ min 0 ~ max 10
+        msg.pitch = 1.7; // éŸ³ç¨‹ min 0 ~ max 2
+
+        msg.text = $('#txt').val(); // å–‹ã‚‹å†…å®¹
         msg.lang = 'ja-JP'; // en-US or ja-JP
 
         var voices = window.speechSynthesis.getVoices();
 
-        // ”­˜bÀs
+        // ç™ºè©±å®Ÿè¡Œ
         speechSynthesis.speak(msg);
 
       };
