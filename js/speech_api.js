@@ -65,11 +65,11 @@ $(function() {
       // 発話機能をインスタンス化
       var msg = new SpeechSynthesisUtterance();
 
-      var synth = window.speechSynthesis;
-      var voices = synth.getVoices();
 
       function speaking() {  //定義されたFunction
 
+        var synth = window.speechSynthesis;
+        var voices = synth.getVoices();
         for(i = 0; i < voices.length ; i++) {
           alert(voices[i].name);
         }
