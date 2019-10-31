@@ -70,7 +70,7 @@ $(function() {
 
         var synth = window.speechSynthesis;
         var voices = synth.getVoices();
-	msg.voice = voices[0];
+	msg.voice = voices[];
 //        for(i = 0; i < voices.length ; i++) {
 //          //alert(voices[i].name);
 //          if (voices[i].lang == "ja-JP"){
