@@ -71,7 +71,10 @@ $(function() {
         var synth = window.speechSynthesis;
         var voices = synth.getVoices();
         for(i = 0; i < voices.length ; i++) {
-          alert(voices[i].name);
+          //alert(voices[i].name);
+          if (voices[i].lang == "ja-JP"){
+            msg.voice = voices[i];
+          }
         }
 
 	msg.volume = 1.0; // 音量 min 0 ~ max 1
