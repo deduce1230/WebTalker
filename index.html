@@ -79,7 +79,7 @@ $(function($){
 
     // 「スタートボタン」を押下で、getUserMedia を使って映像を「映像表示エリア」に表示するよ。
     $start.addEventListener('click', () => {
-        navigator.mediaDevices.getUserMedia({ video: true, video: { facingMode: "environment" }audio: false })
+        navigator.mediaDevices.getUserMedia({ video: true, video: { facingMode: "environment" }, audio: false })
         .then(stream => $video.srcObject = stream)
         .catch(err => alert(`${err.name} ${err.message}`));
     }, false);
